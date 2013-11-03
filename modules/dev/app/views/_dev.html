@@ -1,0 +1,21 @@
+<!-- dev: auto reload -->
+<script type="text/javascript">
+// use ring code
+var pageLoadTime = new Date().getTime();
+function reloadIfSourceChanged() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (request.readyState == 4) {
+            if (request.responseText == 'true') {
+                window.location.reload();
+            }
+            else {
+                setTimeout(reloadIfSourceChanged, 500);
+            }
+        }
+    }
+    request.open('GET', '/_dev/__source_changed?clientSince=' + pageLoadTime, true);
+    request.send();
+}
+window.onload = reloadIfSourceChanged;
+</script>

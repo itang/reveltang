@@ -7,27 +7,30 @@ import (
 	"github.com/robfig/revel"
 )
 
-type XRuntimeable struct {
-	*revel.Controller
-
+// Action invoke info.
+type ActionRTInfo struct {
 	StartTime time.Time
-	CostTime  time.Duration
 	EndTime   time.Time
 }
 
-func (c *XRuntimeable) DoBegin() revel.Result {
-	c.StartTime = time.Now()
+type XRuntimeableController struct {
+	*revel.Controller
+	RTInfo ActionRTInfo
+}
+
+func (c *XRuntimeableController) DoActionBegin() revel.Result {
+	c.RTInfo.StartTime = time.Now()
 	return nil
 }
 
-func (c *XRuntimeable) DoEnd() revel.Result {
-	c.EndTime = time.Now()
-	c.CostTime = c.EndTime.Sub(c.StartTime)
-	c.Response.Out.Header().Add("X-Runtime", fmt.Sprintf("%v", c.CostTime))
+func (c *XRuntimeableController) DoActionEnd() revel.Result {
+	c.RTInfo.EndTime = time.Now()
+	costTime := c.RTInfo.EndTime.Sub(c.RTInfo.StartTime)
+	c.Response.Out.Header().Add("X-Runtime", fmt.Sprintf("%v", costTime))
 	return nil
 }
 
 func init() {
-	revel.InterceptMethod((*XRuntimeable).DoBegin, revel.BEFORE)
-	revel.InterceptMethod((*XRuntimeable).DoEnd, revel.AFTER)
+	revel.InterceptMethod((*XRuntimeableController).DoActionBegin, revel.BEFORE)
+	revel.InterceptMethod((*XRuntimeableController).DoActionEnd, revel.AFTER)
 }
