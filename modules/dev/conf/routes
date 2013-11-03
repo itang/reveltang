@@ -1,1 +1,2 @@
-GET    /_dev/__source_changed    Dev.SourceChanged
+GET /@dev/__source_changed    Dev.SourceChanged
+GET /@dev/public/*filepath    Static.ServeModule(dev,public)
