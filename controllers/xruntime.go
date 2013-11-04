@@ -1,4 +1,4 @@
-package reveltang
+package controllers
 
 import (
 	"fmt"
