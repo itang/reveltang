@@ -3,7 +3,7 @@ package controllers
 import (
 	"time"
 
-	. "github.com/itang/reveltang"
+	. "github.com/itang/reveltang/controllers"
 	"github.com/robfig/revel"
 )
 
