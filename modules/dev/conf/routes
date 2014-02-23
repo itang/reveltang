@@ -1,2 +1,2 @@
-GET /@dev/__source_changed    Dev.SourceChanged
-GET /@dev/public/*filepath    Static.ServeModule(dev,public)
+GET /@reveltang_dev/__source_changed    Dev.SourceChanged
+GET /@reveltang_dev/public/*filepath    Static.ServeModule(reveltang_dev,public)
