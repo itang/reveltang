@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/robfig/revel"
+	"github.com/revel/revel"
 )
 
 func DoFilterChain(c *revel.Controller, fc []revel.Filter) {

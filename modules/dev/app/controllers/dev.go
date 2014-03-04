@@ -4,7 +4,7 @@ import (
 	"time"
 
 	. "github.com/itang/reveltang/controllers"
-	"github.com/robfig/revel"
+	"github.com/revel/revel"
 )
 
 var serverSince = time.Now().UnixNano() / 1000000.0

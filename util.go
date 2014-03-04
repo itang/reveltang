@@ -3,7 +3,7 @@ package reveltang
 import (
 	"fmt"
 
-	"github.com/robfig/revel"
+	"github.com/revel/revel"
 	"github.com/itang/gotang"
 )
 
