@@ -3,8 +3,8 @@ package reveltang
 import (
 	"fmt"
 
-	"github.com/revel/revel"
 	"github.com/itang/gotang"
+	"github.com/revel/revel"
 )
 
 // 获取应用配置， 如果未配置，则panic
